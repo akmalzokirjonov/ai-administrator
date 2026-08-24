@@ -1,495 +1,640 @@
 <!DOCTYPE html>
-<html lang="uz">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
-<title>AI-Administrator — Kechki xabarlar javobsiz qolmasin</title>
-<meta name="description" content="Telegram bot kechasi ham mijozga javob beradi, ismi va telefonini oladi va sizga tayyor lid kartochkasi yuboradi.">
-<script>document.documentElement.className+=" js";</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="color-scheme" content="dark"/>
+<title>AI-Administrator - Mijozni boy bermang</title>
+<meta name="description" content="Telegram bot kechasi ham mijozga javob beradi, ismi va telefonini oladi va sizga tayyor lid kartochkasi yuboradi."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "tertiary-container": "#8582ff",
+                "error-container": "#93000a",
+                "on-background": "#dae2fd",
+                "on-secondary-container": "#00424e",
+                "surface-container": "#171f33",
+                "surface": "#0b1326",
+                "on-primary": "#002e6a",
+                "inverse-surface": "#dae2fd",
+                "on-surface-variant": "#c2c6d6",
+                "secondary-fixed-dim": "#4cd7f6",
+                "on-primary-fixed-variant": "#004395",
+                "on-primary-container": "#00285d",
+                "on-secondary": "#003640",
+                "inverse-primary": "#005ac2",
+                "on-tertiary-fixed-variant": "#3323cc",
+                "surface-bright": "#31394d",
+                "outline-variant": "#424754",
+                "secondary": "#4cd7f6",
+                "surface-container-low": "#131b2e",
+                "surface-container-lowest": "#060e20",
+                "on-error-container": "#ffdad6",
+                "tertiary-fixed": "#e2dfff",
+                "tertiary": "#c3c0ff",
+                "inverse-on-surface": "#283044",
+                "surface-container-high": "#222a3d",
+                "on-secondary-fixed": "#001f26",
+                "tertiary-fixed-dim": "#c3c0ff",
+                "error": "#ffb4ab",
+                "primary": "#adc6ff",
+                "secondary-fixed": "#acedff",
+                "on-primary-fixed": "#001a42",
+                "surface-dim": "#0b1326",
+                "surface-container-highest": "#2d3449",
+                "secondary-container": "#03b5d3",
+                "background": "#0b1326",
+                "primary-fixed": "#d8e2ff",
+                "on-tertiary-fixed": "#0f0069",
+                "primary-fixed-dim": "#adc6ff",
+                "surface-tint": "#adc6ff",
+                "on-surface": "#dae2fd",
+                "on-error": "#690005",
+                "outline": "#8c909f",
+                "surface-variant": "#2d3449",
+                "on-tertiary-container": "#180092",
+                "primary-container": "#4d8eff",
+                "on-secondary-fixed-variant": "#004e5c",
+                "on-tertiary": "#1d00a5"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "container-padding": "24px",
+                "stack-sm": "4px",
+                "base": "8px",
+                "gutter": "16px",
+                "stack-md": "12px",
+                "section-gap": "48px",
+                "stack-lg": "20px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": [ "Sora" ],
+                "label-md": [ "Inter" ],
+                "body-lg": [ "Inter" ],
+                "headline-xl": [ "Sora" ],
+                "headline-md": [ "Sora" ],
+                "body-md": [ "Inter" ],
+                "body-sm": [ "Inter" ],
+                "mono-code": [ "JetBrains Mono" ],
+                "headline-lg": [ "Sora" ]
+        },
+        "fontSize": {
+                "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ],
+                "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" } ],
+                "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ],
+                "headline-xl": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" } ],
+                "headline-md": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ],
+                "body-md": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ],
+                "body-sm": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ],
+                "mono-code": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ],
+                "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" } ]
+        },
+        animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'float-delayed': 'float 6s ease-in-out 3s infinite',
+            'spin-slow': 'spin 8s linear infinite',
+            'mesh-flow': 'mesh-flow 15s ease infinite',
+            'shimmer': 'shimmer 2.5s infinite linear',
+        },
+        keyframes: {
+            float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+            },
+            'mesh-flow': {
+                '0%, 100%': { backgroundPosition: '0% 50%' },
+                '50%': { backgroundPosition: '100% 50%' },
+            },
+            shimmer: {
+                '0%': { backgroundPosition: '-1000px 0' },
+                '100%': { backgroundPosition: '1000px 0' }
+            }
+        }
+      },
+    },
+  }
+</script>
 <style>
-:root{
-  /* Kecha */
-  --ink:#0B1220;
-  --ink-2:#111B2E;
-  --ink-3:#17233B;
-  --line:#22304B;
+        .glass-card {
+            background: rgba(17, 25, 40, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-  /* Matn */
-  --fg:#E9EEF8;
-  --fg-2:#9FB0CC;
-  --fg-3:#66799A;
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 48px rgba(77, 142, 255, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
 
-  /* Yagona urg'u: amber = javob berildi */
-  --amber:#FFB765;
-  --amber-2:#FFD3A0;
-  --amber-ink:#2A1B08;
+        .hero-mesh {
+            background-color: #060e20;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(77, 142, 255, 0.12), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(76, 215, 246, 0.12), transparent 30%),
+                radial-gradient(circle at 50% 80%, rgba(133, 130, 255, 0.08), transparent 30%);
+            background-size: 200% 200%;
+            animation: mesh-flow 20s ease infinite;
+        }
 
-  --maxw:1080px;
-  --r:14px;
-  --display:"Bricolage Grotesque", Georgia, serif;
-  --body:"Instrument Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
-  --mono:"JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
-}
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #adc6ff 40%, #4cd7f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(77, 142, 255, 0.4);
+            background-size: 200% auto;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:var(--ink);
-  color:var(--fg);
-  font-family:var(--body);
-  font-size:17px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+        .border-beam { position: relative; z-index: 1; }
+        .border-beam::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(45deg, #4d8eff, transparent 40%, transparent 60%, #4cd7f6);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.8;
+            transition: opacity 0.4s ease;
+        }
+        .border-beam:hover::before {
+            opacity: 1;
+            background: linear-gradient(45deg, #4d8eff, #8582ff, #4cd7f6, #4d8eff);
+            background-size: 300% 300%;
+            animation: mesh-flow 4s ease infinite;
+        }
 
-a{color:inherit}
-:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+        .animated-gradient-btn {
+            background: linear-gradient(90deg, #4d8eff, #03b5d3, #8582ff, #4d8eff);
+            background-size: 300% 100%;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(77, 142, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .animated-gradient-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: skewX(-20deg);
+            transition: all 0.6s ease;
+        }
+        .animated-gradient-btn:hover {
+            background-position: 100% 0;
+            box-shadow: 0 0 30px rgba(77, 142, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        .animated-gradient-btn:hover::after { left: 150%; }
 
-/* ---------- Tipografika ---------- */
-.eyebrow{
-  font-family:var(--mono);
-  font-size:12px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--fg-3);
-}
-h1{
-  font-family:var(--display);
-  font-weight:800;
-  font-size:clamp(34px,6.2vw,62px);
-  line-height:1.02;
-  letter-spacing:-.025em;
-  margin:18px 0 20px;
-}
-h2{
-  font-family:var(--display);
-  font-weight:700;
-  font-size:clamp(26px,4vw,40px);
-  line-height:1.1;
-  letter-spacing:-.02em;
-}
-.lede{color:var(--fg-2);font-size:clamp(17px,2vw,20px);max-width:46ch}
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
 
-/* ---------- Tugma ---------- */
-.btn{
-  display:inline-block;
-  background:var(--amber);
-  color:var(--amber-ink);
-  font-weight:600;
-  font-size:16px;
-  padding:14px 26px;
-  border-radius:999px;
-  text-decoration:none;
-  transition:transform .18s ease, box-shadow .18s ease;
-  box-shadow:0 8px 30px rgba(255,183,101,.16);
-}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,183,101,.26)}
-.btn.ghost{
-  background:transparent;color:var(--fg);
-  border:1px solid var(--line);box-shadow:none;
-}
-.btn.ghost:hover{border-color:var(--amber);color:var(--amber-2)}
+        .muted-card {
+            background: rgba(11, 19, 38, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(105, 0, 5, 0.15);
+            filter: grayscale(0.5) opacity(0.9);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .muted-card:hover {
+            filter: grayscale(0.2) opacity(1);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(105, 0, 5, 0.1);
+        }
 
-/* ---------- Bo'limlar ---------- */
-section{padding:clamp(64px,9vw,116px) 0}
-.rule{height:1px;background:var(--line)}
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .orb-1 { width: 500px; height: 500px; background: rgba(77, 142, 255, 0.15); top: 10%; left: -10%; }
+        .orb-2 { width: 400px; height: 400px; background: rgba(76, 215, 246, 0.15); bottom: 5%; right: -5%; }
+        .orb-3 { width: 300px; height: 300px; background: rgba(133, 130, 255, 0.1); top: 40%; left: 40%; }
 
-/* ================= HERO ================= */
-.hero{padding-top:clamp(56px,8vw,96px);padding-bottom:0}
-.hero .lede{margin-bottom:30px}
-.hero .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.hero .note{font-family:var(--mono);font-size:12px;color:var(--fg-3);margin-top:16px}
+        :focus-visible { outline: 2px solid #4cd7f6; outline-offset: 3px; border-radius: 8px; }
 
-/* ================= Ikki kecha ================= */
-.nights{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-  margin-top:clamp(40px,6vw,64px);
-  align-items:start;
-}
-.night{
-  background:var(--ink-2);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:22px 20px 24px;
-}
-.night.answered{
-  background:linear-gradient(180deg,#141F35 0%,var(--ink-2) 60%);
-  border-color:#33456B;
-}
-.night-hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:18px}
-.night-hd .who{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em}
-.night.answered .night-hd .who{color:var(--amber-2)}
-.night-hd .date{font-family:var(--mono);font-size:11px;color:var(--fg-3);letter-spacing:.1em}
-
-/* Xabarlar */
-.msg{
-  max-width:88%;
-  padding:11px 14px;
-  border-radius:16px;
-  font-size:15.5px;
-  line-height:1.5;
-  margin-bottom:9px;
-  background:var(--ink-3);
-  border-bottom-left-radius:5px;
-}
-.msg.out{
-  margin-left:auto;
-  background:#1E2C48;
-  border-bottom-left-radius:16px;
-  border-bottom-right-radius:5px;
-}
-.msg.bot{
-  background:rgba(255,183,101,.13);
-  border:1px solid rgba(255,183,101,.3);
-  margin-left:auto;
-  border-bottom-left-radius:16px;
-  border-bottom-right-radius:5px;
-}
-.msg.late{opacity:.48}
-.msg .ts{
-  display:block;
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--fg-3);
-  margin-top:5px;
-  letter-spacing:.04em;
-}
-.msg.bot .ts{color:rgba(255,211,160,.65)}
-
-/* SIGNATURE: jimlik oralig'i */
-.gap{
-  margin:6px 0 6px 16px;
-  padding:0 0 0 22px;
-  border-left:2px dashed #2C3B5C;
-  overflow:hidden;
-  height:var(--gap-h,168px);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-.gap .k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3)}
-.gap .v{
-  font-family:var(--display);
-  font-weight:700;
-  font-size:clamp(24px,3.4vw,34px);
-  line-height:1.05;
-  letter-spacing:-.02em;
-  color:#54678B;
-  margin-top:4px;
-}
-.gap.instant{height:auto;padding:12px 0 12px 22px;border-left-color:rgba(255,183,101,.5)}
-.gap.instant .v{color:var(--amber-2);font-size:clamp(20px,2.6vw,26px)}
-
-.outcome{
-  margin-top:16px;
-  padding-top:14px;
-  border-top:1px solid var(--line);
-  font-size:14.5px;
-  color:var(--fg-2);
-}
-.night.answered .outcome{color:var(--amber-2)}
-
-/* Izohlar — namoyish ichida tushuntirish */
-.ann{
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--fg-3);
-  letter-spacing:.04em;
-  margin:-4px 0 12px auto;
-  text-align:right;
-  max-width:88%;
-}
-
-/* Lid kartochkasi */
-.lead{
-  margin-top:14px;
-  background:var(--ink);
-  border:1px solid rgba(255,183,101,.35);
-  border-radius:14px;
-  padding:14px 16px;
-}
-.lead .hd{
-  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--amber);margin-bottom:10px;
-}
-.lead dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px}
-.lead dt{color:var(--fg-3)}
-.lead dd{color:var(--fg)}
-
-/* ================= Statistika ================= */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:38px}
-.stat{border-top:2px solid var(--amber);padding-top:16px}
-.stat .n{font-family:var(--display);font-weight:800;font-size:clamp(38px,5vw,54px);line-height:1;letter-spacing:-.03em}
-.stat .l{color:var(--fg-2);font-size:14.5px;margin-top:8px}
-.src{font-family:var(--mono);font-size:11.5px;color:var(--fg-3);margin-top:26px;letter-spacing:.04em}
-
-/* ================= Narx ================= */
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:40px}
-.plan{
-  background:var(--ink-2);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:28px 26px;
-  display:flex;flex-direction:column;
-}
-.plan.pick{border-color:var(--amber);background:linear-gradient(180deg,#17223A 0%,var(--ink-2) 55%)}
-.plan .tier{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-3)}
-.plan.pick .tier{color:var(--amber)}
-.plan .amt{font-family:var(--display);font-weight:800;font-size:44px;letter-spacing:-.03em;margin:14px 0 2px;line-height:1}
-.plan .per{color:var(--fg-3);font-family:var(--mono);font-size:12px;letter-spacing:.06em}
-.plan ul{list-style:none;margin:22px 0 26px;font-size:15px}
-.plan li{padding:8px 0 8px 22px;position:relative;color:var(--fg-2);border-bottom:1px solid rgba(34,48,75,.6)}
-.plan li:last-child{border-bottom:none}
-.plan li::before{content:"";position:absolute;left:0;top:16px;width:8px;height:8px;border-radius:50%;background:var(--line)}
-.plan.pick li::before{background:var(--amber)}
-.plan .btn{margin-top:auto;text-align:center}
-
-.caveat{
-  margin-top:34px;padding:20px 22px;
-  border:1px solid var(--line);border-left:3px solid var(--fg-3);
-  border-radius:12px;color:var(--fg-2);font-size:15px;max-width:62ch;
-}
-.caveat strong{color:var(--fg)}
-
-/* ================= Yopish ================= */
-.close{text-align:center}
-.close .lede{margin:16px auto 30px}
-
-footer{
-  border-top:1px solid var(--line);
-  padding:30px 0 46px;
-  font-family:var(--mono);
-  font-size:12px;
-  color:var(--fg-3);
-  letter-spacing:.04em;
-}
-footer a{color:var(--fg-2);text-decoration:none;border-bottom:1px solid var(--line)}
-footer a:hover{color:var(--amber-2)}
-
-/* ================= Harakat ================= */
-.js .rise{opacity:0;transform:translateY(10px)}
-.play .rise{
-  opacity:1;transform:none;
-  transition:opacity .45s ease var(--d,0s), transform .45s ease var(--d,0s);
-}
-
-
-.js .night.silent .gap{height:0;transition:height .9s cubic-bezier(.22,.7,.3,1) .8s}
-.js .night.silent.play .gap{height:var(--gap-h,168px)}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .rise{opacity:1;transform:none;transition:none!important}
-  .js .night.silent .gap{height:var(--gap-h,168px);transition:none}
-  .btn{transition:none}
-}
-
-/* ================= Mobil ================= */
-@media(max-width:860px){
-  .nights{grid-template-columns:1fr;gap:18px}
-  .gap{--gap-h:128px}
-}
-@media(max-width:520px){
-  body{font-size:16px}
-  .msg{max-width:94%;font-size:15px}
-  .ann{max-width:94%}
-}
-</style>
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
+    </style>
 </head>
-<body>
-
-<!-- ========================= HERO + IKKI KECHA ========================= -->
-<header class="hero">
-  <div class="wrap">
-    <p class="eyebrow">Seshanba · 21:42</p>
-    <h1>Bu xabarga<br>kim javob beradi?</h1>
-    <p class="lede">Siz uydasiz, telefon jimjit. Mijoz esa javob kutmaydi — u ro'yxatdagi keyingi klinikaga yozadi.</p>
-    <div class="cta-row">
-      <a class="btn" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">Namoyish botini ochish</a>
-      <a class="btn ghost" href="#narx">Narxni ko'rish</a>
-    </div>
-    <p class="note">Telegram'da ochiladi · ro'yxatdan o'tish shart emas</p>
-
-    <div class="nights">
-
-      <!-- Kecha 1 — jimlik -->
-      <article class="night silent" data-play>
-        <div class="night-hd">
-          <span class="who">Bot yo'q</span>
-          <span class="date">24 · 08 · 21:42</span>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface/60 backdrop-blur-3xl border-b border-outline/10 fixed top-0 w-full z-50 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex justify-between items-center h-20 px-container-padding max-w-7xl mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                AI-Administrator
+            </div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#narx">Tariflar</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#namoyish">Namoyish</a>
+<a class="animated-gradient-btn text-white px-6 py-2.5 rounded-full font-label-md text-label-md hover:opacity-90 transition-all active:scale-95 duration-200 flex items-center gap-2" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-[18px]">send</span> Telegramda yozish
+                </a>
+</div>
+<!-- Mobile Menu Toggle -->
+<button id="menu-toggle" aria-label="Menyu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden border-t border-outline/10 bg-surface/95 backdrop-blur-3xl px-container-padding py-6 flex-col gap-5">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md block" href="#narx">Tariflar</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md block" href="#namoyish">Namoyish</a>
+<a class="animated-gradient-btn text-white px-6 py-3 rounded-full font-label-md text-label-md flex items-center justify-center gap-2" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-[18px]">send</span> Telegramda yozish
+</a>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="hero-mesh min-h-screen flex items-center relative pt-32 pb-24 overflow-hidden">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<!-- Floating Decorative Elements -->
+<div class="absolute top-1/4 left-[10%] animate-float hidden lg:flex items-center gap-2 px-4 py-3 rounded-2xl glass-card border-primary/20">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(77,142,255,0.2)]">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div>
+<div class="text-[10px] text-primary/80 font-bold uppercase tracking-widest">AI Intelligence</div>
+<div class="font-label-md text-on-surface text-sm">Aqlli javoblar</div>
+</div>
+</div>
+<div class="absolute bottom-1/3 right-[10%] animate-float-delayed hidden lg:flex items-center gap-2 px-4 py-3 rounded-2xl glass-card border-secondary/20">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary shadow-[0_0_15px_rgba(76,215,246,0.2)]">
+<span class="material-symbols-outlined">update</span>
+</div>
+<div>
+<div class="text-[10px] text-secondary/80 font-bold uppercase tracking-widest">24/7 Automation</div>
+<div class="font-label-md text-on-surface text-sm">Tinimsiz ish</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-container-padding w-full relative z-10 text-center">
+<div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card border-outline/20 mb-10 shadow-[0_0_25px_rgba(76,215,246,0.15)]">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+</span>
+<span class="font-label-md text-label-md text-on-surface tracking-wide">24/7 Avtomatlashtirilgan javoblar</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-8 mx-auto max-w-4xl tracking-tighter leading-tight">
+                    Bu xabarga <br class="hidden sm:block"/> <span class="gradient-text">kim javob beradi?</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-14 leading-relaxed">
+                    Siz uydasiz, telefon jimjit. Mijoz esa javob kutmaydi — u ro'yxatdagi keyingi klinikaga yozadi. Bizning AI buni o'zgartiradi.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+<a class="w-full sm:w-auto animated-gradient-btn text-white px-8 py-4 rounded-full font-label-md text-label-md flex items-center justify-center gap-2" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
+<span class="material-symbols-outlined">play_circle</span>
+                        Namoyish botini ochish
+                    </a>
+<a class="w-full sm:w-auto glass-card text-on-background px-8 py-4 rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-all border border-outline/20 hover:border-outline/40 shadow-lg" href="#narx">
+                        Narxni ko'rish
+                    </a>
+</div>
+<p class="font-label-md text-label-md text-outline flex items-center justify-center gap-2 tracking-wide opacity-80">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                    Telegram'da ochiladi · ro'yxatdan o'tish shart emas
+                </p>
+</div>
+</section>
+<!-- Chat Comparison Section -->
+<section class="py-32 bg-surface-container-lowest relative overflow-hidden" id="namoyish">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-container-padding relative z-10">
+<div class="text-center mb-20">
+<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-on-surface-variant mb-6 tracking-tight">Mijozni boy bermang</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Vaqt — bu mijoz. Kechikkan javob, yo'qotilgan daromad demakdir.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-6xl mx-auto items-stretch">
+<!-- Scenario 1: Without Bot -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4 mb-2">
+<div class="h-px bg-outline/20 flex-1"></div>
+<span class="font-label-md text-label-md text-error/80 uppercase tracking-widest px-4 py-1.5 rounded-full bg-error/10 border border-error/20 shadow-[0_0_15px_rgba(255,180,171,0.1)]">Botsiz</span>
+<div class="h-px bg-outline/20 flex-1"></div>
+</div>
+<div class="muted-card rounded-[2rem] p-8 flex flex-col h-full shadow-2xl relative overflow-hidden">
+<div class="absolute inset-0 bg-error/5 opacity-10 pointer-events-none"></div>
+<div class="flex items-center gap-4 border-b border-outline/10 pb-5 mb-8 relative z-10">
+<div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-outline border border-outline/20">
+<span class="material-symbols-outlined text-2xl">person_off</span>
+</div>
+<div>
+<div class="font-headline-md text-lg text-on-surface">Mijoz</div>
+<div class="font-label-md text-xs text-error flex items-center gap-1.5 mt-1">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+                                        Yo'qotildi
+                                    </div>
+</div>
+</div>
+<div class="space-y-8 flex-1 relative z-10">
+<div class="flex justify-end">
+<div class="bg-surface-container text-on-surface px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-md border border-outline/5">
+                                        Assalomu alaykum, ertaga tish doktoriga bo'sh vaqt bormi?
+                                        <div class="text-[11px] text-right mt-3 text-outline">Kecha 22:10</div>
+</div>
+</div>
+<div class="flex justify-center items-center gap-4">
+<div class="h-px bg-outline/20 flex-1"></div>
+<span class="font-label-md text-xs text-outline px-3 py-1 bg-surface-container/50 rounded-full border border-outline/20 shadow-inner">11 soat o'tdi</span>
+<div class="h-px bg-outline/20 flex-1"></div>
+</div>
+<div class="flex justify-start opacity-60">
+<div class="glass-card text-on-surface px-5 py-4 rounded-2xl rounded-tl-sm max-w-[85%] font-body-md text-body-md border border-outline/10">
+                                        Vaalaykum assalom. Ha, soat 14:00 va 16:30 da bo'sh joy bor.
+                                        <div class="text-[11px] text-right mt-3 text-outline">Bugun 09:15</div>
+</div>
+</div>
+<div class="flex justify-end">
+<div class="bg-error-container/20 border border-error/30 text-on-error-container px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-lg">
+                                        Rahmat, men kecha boshqa joyga yozildim.
+                                        <div class="text-[11px] text-right mt-3 text-error/70">Bugun 09:20</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Scenario 2: With AI-Administrator -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4 mb-2">
+<div class="h-px bg-outline/20 flex-1"></div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/30 shadow-[0_0_15px_rgba(76,215,246,0.2)]">AI-Administrator bilan</span>
+<div class="h-px bg-outline/20 flex-1"></div>
+</div>
+<div class="glass-card border-beam rounded-[2rem] p-8 flex flex-col h-full relative shadow-[0_20px_50px_rgba(76,215,246,0.1)] bg-surface-container/80"><!-- Header -->
+<div class="flex items-center gap-4 border-b border-outline/10 pb-5 mb-8 relative z-10">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary border border-primary/20 shadow-[0_0_15px_rgba(173,198,255,0.2)]">
+<span class="material-symbols-outlined text-2xl">smart_toy</span>
+</div>
+<div>
+<div class="font-headline-md text-lg text-on-surface">AI-Administrator</div>
+<div class="font-label-md text-xs text-secondary flex items-center gap-1.5 mt-1">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+            Onlayn
         </div>
-
-        <div class="msg rise" style="--d:.05s">Salom! Implant qancha turadi?<span class="ts">21:42</span></div>
-        <div class="msg rise" style="--d:.4s">Ertaga bo'sh joyingiz bormi?<span class="ts">21:43</span></div>
-
-        <div class="gap">
-          <span class="k">Javob yo'q</span>
-          <span class="v">11 soat<br>32 daqiqa</span>
-        </div>
-
-        <div class="msg out late rise" style="--d:1.95s">Assalomu alaykum! Albatta, bo'sh joy bor.<span class="ts">09:15</span></div>
-
-        <p class="outcome">Mijoz kecha soat 22:10 da javob bergan klinikaga yozilgan.</p>
-      </article>
-
-      <!-- Kecha 2 — javob berilgan -->
-      <article class="night answered" data-play>
-        <div class="night-hd">
-          <span class="who">AI-Administrator bilan</span>
-          <span class="date">24 · 08 · 21:42</span>
-        </div>
-
-        <div class="msg rise" style="--d:.05s">Salom! Implant qancha turadi?<span class="ts">21:42</span></div>
-        <div class="msg bot rise" style="--d:.4s">Assalomu alaykum! Implant 6 000 000 so'mdan boshlanadi. Aniq narx ko'rikdan keyin belgilanadi.<span class="ts">21:42</span></div>
-        <p class="ann rise" style="--d:.6s">narxni sizning bilim bazangizdan oldi</p>
-
-        <div class="msg rise" style="--d:.85s">Ertaga bo'sh joyingiz bormi?<span class="ts">21:43</span></div>
-        <div class="msg bot rise" style="--d:1.2s">Ha. Ismingiz va telefon raqamingizni qoldiring — administrator ertalab qo'ng'iroq qiladi.<span class="ts">21:43</span></div>
-        <p class="ann rise" style="--d:1.4s">telefonni o'zi so'radi</p>
-
-        <div class="msg rise" style="--d:1.65s">Dilnoza, +998 90 123-45-67<span class="ts">21:44</span></div>
-
-        <div class="gap instant">
-          <span class="k">Sizga keldi</span>
-          <span class="v">2 daqiqada</span>
-        </div>
-
-        <div class="lead rise" style="--d:2s">
-          <div class="hd">🆕 Yangi lid</div>
-          <dl>
-            <dt>Ism</dt><dd>Dilnoza</dd>
-            <dt>Telefon</dt><dd>+998 90 123-45-67</dd>
-            <dt>Qulay vaqt</dt><dd>ertaga tushdan keyin</dd>
-            <dt>Savol</dt><dd>Implant narxi</dd>
-          </dl>
-        </div>
-
-        <p class="outcome">Ertalab qo'ng'iroq qilasiz. Mijoz hali sizniki.</p>
-      </article>
-
-    </div>
-  </div>
-</header>
+</div>
+</div>
+<!-- Chat Messages -->
+<div class="space-y-6 flex-1 relative z-10">
+<!-- User Message -->
+<div class="flex justify-end">
+<div class="bg-surface-container-high text-on-surface px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-md border border-outline/5">
+            Assalomu alaykum, ertaga tish doktoriga bo'sh vaqt bormi?
+            <div class="text-[11px] text-right mt-3 text-outline">22:10</div>
+</div>
+</div>
+<!-- AI Response -->
+<div class="flex justify-start">
+<div class="bg-primary/10 border border-primary/20 text-on-surface px-5 py-4 rounded-2xl rounded-tl-sm max-w-[85%] font-body-md text-body-md shadow-lg backdrop-blur-sm">
+            Va alaykum assalom! 🦷 Ha, ertaga qabul bor. Ismingiz va telefon raqamingizni qoldiring — administrator ertalab qo'ng'iroq qilib, sizga qulay vaqtni kelishadi.
+            <div class="text-[11px] text-right mt-3 text-primary/70">22:10</div>
+</div>
+</div>
+<!-- User Confirmation -->
+<div class="flex justify-end">
+<div class="bg-surface-container-high text-on-surface px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-md border border-outline/5">
+            Dilnoza, +998 90 123-45-67. Tushdan keyin qulay.
+            <div class="text-[11px] text-right mt-3 text-outline">22:12</div>
+</div>
+</div>
+<!-- Success Notification -->
+<div class="flex justify-start">
+<div class="bg-secondary/10 border border-secondary/30 text-on-surface px-5 py-4 rounded-2xl max-w-[85%] font-body-sm text-body-sm flex items-start gap-3 shadow-[0_4px_20px_rgba(76,215,246,0.1)] backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<div>
+<div class="font-bold tracking-wide">Lid kartochkasi yuborildi!</div>
+<div class="text-xs opacity-70 mt-0.5">Dilnoza · +998 90 123-45-67 · tushdan keyin — egasining Telegramiga bordi.</div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<p class="text-center font-body-sm text-body-sm text-outline mt-16 max-w-2xl mx-auto leading-relaxed">
+Bot qabulga yozmaydi — u mijozning ismi va telefonini oladi va sizga uzatadi.
+Aniq vaqtni administratoringiz jonli qo'ng'iroqda kelishadi.
+</p>
+</div>
+</section>
 
 <!--
-  ========================= STATISTIKA =========================
+  ================= STATISTIKA =================
   DIQQAT: bu blok javobsizlik testidan KEYIN ochiladi.
   `python javobsizlik.py` chiqargan REAL raqamlarni qo'ying. O'ylab topmang.
-  To'ldirgach `<!--` va `-- >` belgilarini olib tashlang.
+  To'ldirgach izoh belgilarini olib tashlang.
 
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Tekshiruv</p>
-    <h2>Buni o'zimiz o'lchadik</h2>
-    <p class="lede" style="margin-top:14px">Toshkentdagi 30 ta bizneska kechqurun soat 21:30 da oddiy mijoz sifatida yozdik va javobni kutdik.</p>
-    <div class="stats">
-      <div class="stat"><div class="n">__</div><div class="l">tasi o'sha kechqurun umuman javob bermadi</div></div>
-      <div class="stat"><div class="n">__%</div><div class="l">javobsizlik darajasi</div></div>
-      <div class="stat"><div class="n">__ soat</div><div class="l">o'rtacha javob kutish vaqti</div></div>
-    </div>
-    <p class="src">Namuna: 30 ta biznes · stomatologiya, avtoservis, go'zallik saloni · Toshkent · __.08.2026</p>
-  </div>
+<section class="py-32 bg-surface relative">
+<div class="max-w-7xl mx-auto px-container-padding">
+<div class="text-center mb-20 max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-fixed mb-6 tracking-tight">Buni o'zimiz o'lchadik</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Toshkentdagi 30 ta bizneska kechqurun soat 21:30 da oddiy mijoz sifatida yozdik.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+<div class="glass-card rounded-[2rem] p-10 text-center">
+<div class="font-headline-xl text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold">__</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-4">tasi o'sha kechqurun umuman javob bermadi</div>
+</div>
+<div class="glass-card rounded-[2rem] p-10 text-center">
+<div class="font-headline-xl text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold">__%</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-4">javobsizlik darajasi</div>
+</div>
+<div class="glass-card rounded-[2rem] p-10 text-center">
+<div class="font-headline-xl text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold">__</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-4">soat o'rtacha javob kutish vaqti</div>
+</div>
+</div>
+<p class="text-center font-label-md text-label-md text-outline mt-12">Namuna: 30 ta biznes · stomatologiya, avtoservis, go'zallik saloni · Toshkent · __.08.2026</p>
+</div>
 </section>
 -->
 
-<div class="wrap"><div class="rule"></div></div>
-
-<!-- ========================= NARX ========================= -->
-<section id="narx">
-  <div class="wrap">
-    <p class="eyebrow">Narx</p>
-    <h2>Oydan-oyga to'laysiz</h2>
-    <p class="lede" style="margin-top:14px">Uzoq muddatli shartnoma yo'q. Yoqmasa — keyingi oy to'lamaysiz, tamom.</p>
-
-    <div class="plans">
-      <div class="plan pick">
-        <span class="tier">Standart</span>
-        <div class="amt">500 000</div>
-        <div class="per">so'm / oy</div>
-        <ul>
-          <li>Sizning nomingiz bilan alohida bot</li>
-          <li>Narx, manzil, ish vaqti — botda</li>
-          <li>Ism va telefonni o'zi so'raydi</li>
-          <li>Lid kartochkasi Telegram'ingizga</li>
-          <li>Bilim bazasini istalgan vaqt yangilaysiz</li>
-          <li>Sozlash va ishga tushirish kiritilgan</li>
-        </ul>
-        <a class="btn" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">Avval sinab ko'ring</a>
-      </div>
-
-      <div class="plan">
-        <span class="tier">Kengaytirilgan</span>
-        <div class="amt">700 000</div>
-        <div class="per">so'm / oy</div>
-        <ul>
-          <li>Standart tarifdagi hamma narsa</li>
-          <li>Ovozli xabarni tushunadi</li>
-          <li>Prays-listni fayl bilan yuklaysiz</li>
-          <li>Lidlar Google Sheets yoki AmoCRM'ga</li>
-          <li>Suhbatlar tarixi va statistika</li>
-          <li>Ustuvor qo'llab-quvvatlash</li>
-        </ul>
-        <a class="btn ghost" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">Avval sinab ko'ring</a>
-      </div>
-    </div>
-
-    <p class="caveat">
-      <strong>Bot qabulga yozmaydi.</strong> U lid yig'adi va sizga uzatadi — yozuvni administratoringiz
-      o'zi tasdiqlaydi. Jonli qo'ng'iroq mijozni taqvimdagi tugmadan ko'ra ko'proq ushlab qoladi.
-    </p>
-  </div>
+<!-- Pricing Section -->
+<section class="py-32 bg-surface relative" id="narx">
+<div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-outline/20 to-transparent"></div>
+<div class="max-w-7xl mx-auto px-container-padding">
+<div class="text-center mb-20 max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-fixed mb-6 tracking-tight">Sarmoyadan yuqori daromad</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Bitta qaytarilgan mijoz oylik to'lovni qoplaydi. Uzoq muddatli shartnoma yo'q.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto items-stretch">
+<!-- Standard Plan -->
+<div class="glass-card rounded-[2rem] p-10 flex flex-col h-full border border-outline/10 hover:border-outline/30 transition-all duration-400">
+<div class="mb-10">
+<div class="font-label-md text-sm text-secondary mb-3 tracking-widest uppercase font-bold">Standart</div>
+<div class="flex items-baseline gap-2">
+<h3 class="font-headline-xl text-5xl text-on-background font-extrabold tracking-tighter">500 000</h3>
+<span class="text-body-md font-medium text-on-surface-variant">so'm/oy</span>
+</div>
+</div>
+<ul class="flex-1 space-y-6 mb-12">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Sizning nomingiz bilan alohida bot</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Narx, manzil va ish vaqti bo'yicha javoblar</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Mijoz kontaktlarini (lid) Telegram'ga yuborish</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Bilimlar bazasini istalgan vaqt yangilash</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Sozlash va ishga tushirish kiritilgan</span>
+</li>
+</ul>
+<a class="w-full bg-surface-bright/50 backdrop-blur-sm text-on-surface py-4 rounded-xl font-label-md text-sm uppercase tracking-widest font-bold hover:bg-surface-container-high transition-colors border border-outline/20 hover:border-outline/40 shadow-sm text-center block" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
+                            Avval sinab ko'ring
+                        </a>
+</div>
+<!-- Premium Plan -->
+<div class="glass-card border-beam rounded-[2rem] p-8 flex flex-col h-full relative shadow-[0_20px_50px_rgba(76,215,246,0.15)] bg-surface-container overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_2.5s_infinite_linear] pointer-events-none"></div>
+<div class="mb-10 relative z-10">
+<div class="font-label-md text-sm text-secondary mb-3 tracking-widest uppercase font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified</span> Kengaytirilgan
+                            </div>
+<div class="flex items-baseline gap-2">
+<h3 class="font-headline-xl text-5xl text-on-background font-extrabold tracking-tighter">700 000</h3>
+<span class="text-body-md font-medium text-on-surface-variant">so'm/oy</span>
+</div>
+</div>
+<ul class="flex-1 space-y-6 mb-12 relative z-10">
+<li class="flex items-start gap-4 p-4 rounded-xl bg-secondary/10 border border-secondary/20 shadow-inner">
+<span class="material-symbols-outlined text-secondary text-[24px]">done_all</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold mt-0.5">Standart tarifdagi barcha imkoniyatlar</span>
+</li>
+<li class="flex items-start gap-4 px-2">
+<span class="material-symbols-outlined text-secondary/80 text-[22px]">graphic_eq</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Ovozli xabarlarni tushunish</span>
+</li>
+<li class="flex items-start gap-4 px-2">
+<span class="material-symbols-outlined text-secondary/80 text-[22px]">note_add</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Narxnomalarni fayl yuklash orqali yangilash</span>
+</li>
+<li class="flex items-start gap-4 px-2">
+<span class="material-symbols-outlined text-secondary/80 text-[22px]">hub</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">CRM integratsiya (Google Sheets / AmoCRM)</span>
+</li>
+<li class="flex items-start gap-4 px-2">
+<span class="material-symbols-outlined text-secondary/80 text-[22px]">query_stats</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Suhbatlar tarixi va statistika</span>
+</li>
+<li class="flex items-start gap-4 px-2">
+<span class="material-symbols-outlined text-secondary/80 text-[22px]">support_agent</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Ustuvor texnik yordam</span>
+</li>
+</ul>
+<a class="w-full animated-gradient-btn text-white py-4 rounded-xl font-label-md text-sm uppercase tracking-widest font-bold relative z-10 text-center block" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
+                            Avval sinab ko'ring
+                        </a>
+</div>
+</div>
+</div>
 </section>
-
-<div class="wrap"><div class="rule"></div></div>
-
-<!-- ========================= YOPISH ========================= -->
-<section class="close">
-  <div class="wrap">
-    <p class="eyebrow">Bugun kechqurun</p>
-    <h2>Bot ishlab tursin</h2>
-    <p class="lede">Ishga tushirish bir kun oladi. Sizdan kerak bo'ladigan narsa — xizmatlar ro'yxati,
-       narxlar, manzil va ish vaqti. Qolganini men qilaman.</p>
-    <a class="btn" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">Telegram'da yozish</a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    AI-Administrator · 2026 · Namoyish boti
-    <a href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">@AISupportUzBot</a>
-  </div>
+</main>
+<!-- Call to Action & Footer Combined -->
+<footer class="bg-surface-container-lowest border-t border-outline/10 w-full pt-24 pb-0 relative overflow-hidden">
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-t-[100%] blur-[120px] pointer-events-none"></div>
+<!-- CTA Section -->
+<div class="max-w-4xl mx-auto px-container-padding text-center mb-24 relative z-10">
+<h2 class="font-headline-xl text-5xl text-on-background mb-8 font-extrabold tracking-tighter">
+                Bugun kechqurun bot ishlab tursin
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12 leading-relaxed max-w-2xl mx-auto">
+                Ishga tushirish atigi bir kun oladi. Sizdan kerak bo'ladigan narsa — xizmatlar ro'yxati, narxlar, manzil va ish vaqti.
+            </p>
+<a class="inline-flex items-center gap-3 animated-gradient-btn text-white px-10 py-5 rounded-full font-label-md text-base uppercase tracking-widest font-bold shadow-2xl hover:shadow-[0_10px_40px_rgba(77,142,255,0.4)]" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-[24px]">rocket_launch</span>
+                Hoziroq boshlash
+            </a>
+</div>
+<!-- Footer Component -->
+<div class="border-t border-outline/10 relative z-10 bg-surface/40 backdrop-blur-xl">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-container-padding max-w-7xl mx-auto w-full py-16">
+<div class="col-span-1 md:col-span-2">
+<div class="font-headline-md text-headline-md font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">
+                        AI-Administrator
+                    </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs leading-relaxed">
+                        Klinika va xizmat ko'rsatish sohalari uchun Telegram administrator.
+                        Kechki xabarlarga javob beradi, lid yig'adi va sizga uzatadi.
+                    </p>
+</div>
+<div class="flex flex-col gap-4 font-body-sm text-body-sm">
+<div class="font-label-md text-on-surface mb-2 font-bold uppercase tracking-widest">Mahsulot</div>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#namoyish">Namoyish</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#narx">Tariflar</a>
+</div>
+<div class="flex flex-col gap-4 font-body-sm text-body-sm">
+<div class="font-label-md text-on-surface mb-2 font-bold uppercase tracking-widest">Aloqa</div>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">Telegram orqali yozish</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">Namoyish botini ochish</a>
+</div>
+<div class="col-span-1 md:col-span-4 mt-12 pt-8 border-t border-outline/10 font-body-sm text-body-sm text-on-surface-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<span>© 2026 AI-Administrator</span>
+<span class="text-outline text-xs">Namoyish boti: @AISupportUzBot</span>
+</div>
+</div>
+</div>
 </footer>
-
 <script>
 (function(){
-  var nodes = [].slice.call(document.querySelectorAll('[data-play]'));
-  function play(n){ n.classList.add('play'); }
-
-  // Zaxira: nima bo'lsa ham 1.8 soniyadan keyin ko'rsatiladi.
-  // Sotuv sahifasi hech qachon bo'sh qolmasligi kerak.
-  var fallback = setTimeout(function(){ nodes.forEach(play); }, 1800);
-
-  if (!('IntersectionObserver' in window)) { nodes.forEach(play); return; }
-
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      // element viewportdan baland bo'lsa ratio hech qachon katta bo'lmaydi,
-      // shuning uchun isIntersecting ning o'zi yetarli
-      if (e.isIntersecting) { play(e.target); io.unobserve(e.target); }
-    });
-    if (!nodes.some(function(n){ return !n.classList.contains('play'); })) clearTimeout(fallback);
-  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
-
-  nodes.forEach(function(n){ io.observe(n); });
+  var btn = document.getElementById('menu-toggle');
+  var menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(){
+    var open = menu.classList.toggle('hidden') === false;
+    menu.classList.toggle('flex', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') {
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
 })();
 </script>
-
-</body>
-</html>
+</body></html>

@@ -34,14 +34,22 @@ Alohida qadamlar qatori shablon bo'lardi va chat allaqachon ketma-ketlikni ko'rs
 4. **Narx** — 500 000 / 700 000
 5. **Yopish**
 
-## Deploy
+## Jonli manzil
 
-1. GitHub'da yangi **public** repo: `ai-administrator`
-2. Shu papkadagi fayllarni push qiling
-3. Settings → Pages → Source: `main` / `(root)`
-4. URL: `https://<username>.github.io/ai-administrator/`
+**https://akmalzokirjonov.github.io/ai-administrator/**
 
-> GitHub Pages tokeni deploy'dan keyin bekor qilinadi (`AGENTS.md`) — har safar yangisi kerak.
+Repo: `github.com/akmalzokirjonov/ai-administrator` (public, `main` / `(root)`, HTTPS majburiy).
+
+## Yangilash
+
+```
+cd ai-administrator
+git add -A
+git commit -m "nima o'zgardi"
+git push
+```
+
+1–2 daqiqada jonli bo'ladi.
 
 ## Lokal ko'rish
 
