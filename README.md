@@ -13,7 +13,7 @@ A conversion-focused Uzbek-language landing page for an AI-assisted Telegram sal
 - Accessible keyboard focus and reduced-motion support
 - Progressive enhancement: core content remains visible without JavaScript
 - Lightweight static deployment through GitHub Pages
-- No framework or build step required
+- No local build step required
 
 ## Design approach
 
@@ -22,7 +22,8 @@ The page uses a dark navy palette to represent after-hours communication and amb
 ## Built with
 
 - Semantic HTML5
-- Modern CSS
+- Tailwind CSS via CDN
+- Custom CSS
 - Vanilla JavaScript
 - GitHub Pages
 
