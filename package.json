@@ -1,0 +1,12 @@
+{
+  "name": "ai-administrator-landing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./assets/styles.css --minify",
+    "check": "node --check assets/menu.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.19"
+  }
+}

@@ -5,245 +5,22 @@
 <meta name="color-scheme" content="dark"/>
 <title>AI-Administrator - Mijozni boy bermang</title>
 <meta name="description" content="Telegram bot kechasi ham mijozga javob beradi, ismi va telefonini oladi va sizga tayyor lid kartochkasi yuboradi."/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<meta name="theme-color" content="#0b1326"/>
+<link rel="canonical" href="https://akmalzokirjonov.github.io/ai-administrator/"/>
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="AI-Administrator — Mijozni boy bermang"/>
+<meta property="og:description" content="Telegram orqali kechki xabarlarga javob va mijoz kontaktlarini yig'ish."/>
+<meta property="og:url" content="https://akmalzokirjonov.github.io/ai-administrator/"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="stylesheet" href="./assets/styles.css"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-                "tertiary-container": "#8582ff",
-                "error-container": "#93000a",
-                "on-background": "#dae2fd",
-                "on-secondary-container": "#00424e",
-                "surface-container": "#171f33",
-                "surface": "#0b1326",
-                "on-primary": "#002e6a",
-                "inverse-surface": "#dae2fd",
-                "on-surface-variant": "#c2c6d6",
-                "secondary-fixed-dim": "#4cd7f6",
-                "on-primary-fixed-variant": "#004395",
-                "on-primary-container": "#00285d",
-                "on-secondary": "#003640",
-                "inverse-primary": "#005ac2",
-                "on-tertiary-fixed-variant": "#3323cc",
-                "surface-bright": "#31394d",
-                "outline-variant": "#424754",
-                "secondary": "#4cd7f6",
-                "surface-container-low": "#131b2e",
-                "surface-container-lowest": "#060e20",
-                "on-error-container": "#ffdad6",
-                "tertiary-fixed": "#e2dfff",
-                "tertiary": "#c3c0ff",
-                "inverse-on-surface": "#283044",
-                "surface-container-high": "#222a3d",
-                "on-secondary-fixed": "#001f26",
-                "tertiary-fixed-dim": "#c3c0ff",
-                "error": "#ffb4ab",
-                "primary": "#adc6ff",
-                "secondary-fixed": "#acedff",
-                "on-primary-fixed": "#001a42",
-                "surface-dim": "#0b1326",
-                "surface-container-highest": "#2d3449",
-                "secondary-container": "#03b5d3",
-                "background": "#0b1326",
-                "primary-fixed": "#d8e2ff",
-                "on-tertiary-fixed": "#0f0069",
-                "primary-fixed-dim": "#adc6ff",
-                "surface-tint": "#adc6ff",
-                "on-surface": "#dae2fd",
-                "on-error": "#690005",
-                "outline": "#8c909f",
-                "surface-variant": "#2d3449",
-                "on-tertiary-container": "#180092",
-                "primary-container": "#4d8eff",
-                "on-secondary-fixed-variant": "#004e5c",
-                "on-tertiary": "#1d00a5"
-        },
-        "borderRadius": {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "full": "9999px"
-        },
-        "spacing": {
-                "container-padding": "24px",
-                "stack-sm": "4px",
-                "base": "8px",
-                "gutter": "16px",
-                "stack-md": "12px",
-                "section-gap": "48px",
-                "stack-lg": "20px"
-        },
-        "fontFamily": {
-                "headline-lg-mobile": [ "Sora" ],
-                "label-md": [ "Inter" ],
-                "body-lg": [ "Inter" ],
-                "headline-xl": [ "Sora" ],
-                "headline-md": [ "Sora" ],
-                "body-md": [ "Inter" ],
-                "body-sm": [ "Inter" ],
-                "mono-code": [ "JetBrains Mono" ],
-                "headline-lg": [ "Sora" ]
-        },
-        "fontSize": {
-                "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ],
-                "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" } ],
-                "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ],
-                "headline-xl": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" } ],
-                "headline-md": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ],
-                "body-md": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ],
-                "body-sm": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ],
-                "mono-code": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ],
-                "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" } ]
-        },
-        animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'float-delayed': 'float 6s ease-in-out 3s infinite',
-            'spin-slow': 'spin 8s linear infinite',
-            'mesh-flow': 'mesh-flow 15s ease infinite',
-            'shimmer': 'shimmer 2.5s infinite linear',
-        },
-        keyframes: {
-            float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-            },
-            'mesh-flow': {
-                '0%, 100%': { backgroundPosition: '0% 50%' },
-                '50%': { backgroundPosition: '100% 50%' },
-            },
-            shimmer: {
-                '0%': { backgroundPosition: '-1000px 0' },
-                '100%': { backgroundPosition: '1000px 0' }
-            }
-        }
-      },
-    },
-  }
-</script>
-<style>
-        .glass-card {
-            background: rgba(17, 25, 40, 0.4);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 48px rgba(77, 142, 255, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .hero-mesh {
-            background-color: #060e20;
-            background-image:
-                radial-gradient(circle at 15% 50%, rgba(77, 142, 255, 0.12), transparent 30%),
-                radial-gradient(circle at 85% 30%, rgba(76, 215, 246, 0.12), transparent 30%),
-                radial-gradient(circle at 50% 80%, rgba(133, 130, 255, 0.08), transparent 30%);
-            background-size: 200% 200%;
-            animation: mesh-flow 20s ease infinite;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #ffffff 0%, #adc6ff 40%, #4cd7f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 40px rgba(77, 142, 255, 0.4);
-            background-size: 200% auto;
-        }
-
-        .border-beam { position: relative; z-index: 1; }
-        .border-beam::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: inherit;
-            padding: 1px;
-            background: linear-gradient(45deg, #4d8eff, transparent 40%, transparent 60%, #4cd7f6);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.8;
-            transition: opacity 0.4s ease;
-        }
-        .border-beam:hover::before {
-            opacity: 1;
-            background: linear-gradient(45deg, #4d8eff, #8582ff, #4cd7f6, #4d8eff);
-            background-size: 300% 300%;
-            animation: mesh-flow 4s ease infinite;
-        }
-
-        .animated-gradient-btn {
-            background: linear-gradient(90deg, #4d8eff, #03b5d3, #8582ff, #4d8eff);
-            background-size: 300% 100%;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 20px rgba(77, 142, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        .animated-gradient-btn::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: skewX(-20deg);
-            transition: all 0.6s ease;
-        }
-        .animated-gradient-btn:hover {
-            background-position: 100% 0;
-            box-shadow: 0 0 30px rgba(77, 142, 255, 0.5);
-            transform: translateY(-2px);
-        }
-        .animated-gradient-btn:hover::after { left: 150%; }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        .muted-card {
-            background: rgba(11, 19, 38, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(105, 0, 5, 0.15);
-            filter: grayscale(0.5) opacity(0.9);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .muted-card:hover {
-            filter: grayscale(0.2) opacity(1);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(105, 0, 5, 0.1);
-        }
-
-        /* Glowing Orbs */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-        .orb-1 { width: 500px; height: 500px; background: rgba(77, 142, 255, 0.15); top: 10%; left: -10%; }
-        .orb-2 { width: 400px; height: 400px; background: rgba(76, 215, 246, 0.15); bottom: 5%; right: -5%; }
-        .orb-3 { width: 300px; height: 300px; background: rgba(133, 130, 255, 0.1); top: 40%; left: 40%; }
-
-        :focus-visible { outline: 2px solid #4cd7f6; outline-offset: 3px; border-radius: 8px; }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation: none !important; transition: none !important; }
-        }
-    </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<a class="skip-link" href="#main-content">Asosiy mazmunga o'tish</a>
 <!-- TopNavBar -->
 <nav class="bg-surface/60 backdrop-blur-3xl border-b border-outline/10 fixed top-0 w-full z-50 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
 <div class="flex justify-between items-center h-20 px-container-padding max-w-7xl mx-auto">
@@ -259,12 +36,12 @@
                 </a>
 </div>
 <!-- Mobile Menu Toggle -->
-<button id="menu-toggle" aria-label="Menyu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-primary p-2">
+<button id="menu-toggle" type="button" hidden aria-label="Menyu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-primary p-2">
 <span class="material-symbols-outlined">menu</span>
 </button>
 </div>
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden border-t border-outline/10 bg-surface/95 backdrop-blur-3xl px-container-padding py-6 flex-col gap-5">
+<div id="mobile-menu" class="flex md:hidden border-t border-outline/10 bg-surface/95 backdrop-blur-3xl px-container-padding py-6 flex-col gap-5">
 <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md block" href="#narx">Tariflar</a>
 <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md block" href="#namoyish">Namoyish</a>
 <a class="animated-gradient-btn text-white px-6 py-3 rounded-full font-label-md text-label-md flex items-center justify-center gap-2" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
@@ -272,7 +49,7 @@
 </a>
 </div>
 </nav>
-<main>
+<main id="main-content" tabindex="-1">
 <!-- Hero Section -->
 <section class="hero-mesh min-h-screen flex items-center relative pt-32 pb-24 overflow-hidden">
 <div class="orb orb-1"></div>
@@ -618,23 +395,5 @@ Aniq vaqtni administratoringiz jonli qo'ng'iroqda kelishadi.
 </div>
 </div>
 </footer>
-<script>
-(function(){
-  var btn = document.getElementById('menu-toggle');
-  var menu = document.getElementById('mobile-menu');
-  if (!btn || !menu) return;
-  btn.addEventListener('click', function(){
-    var open = menu.classList.toggle('hidden') === false;
-    menu.classList.toggle('flex', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  menu.addEventListener('click', function(e){
-    if (e.target.tagName === 'A') {
-      menu.classList.add('hidden');
-      menu.classList.remove('flex');
-      btn.setAttribute('aria-expanded', 'false');
-    }
-  });
-})();
-</script>
+<script src="./assets/menu.js" defer></script>
 </body></html>

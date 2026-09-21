@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="240" viewBox="0 0 1000 240" role="img" aria-labelledby="title desc">
+  <title id="title">AI Administrator</title>
+  <desc id="desc">Turn after-hours messages into conversations.</desc>
+  <rect width="1000" height="240" rx="14" fill="#111E2D"/>
+  <rect x="0" y="0" width="5" height="240" rx="2" fill="#79DBEB"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="42" y="47" font-size="13" font-weight="600" letter-spacing="2.5" fill="#79DBEB">TELEGRAM · PRODUCT LANDING PAGE</text>
+    <text x="40" y="106" font-size="46" font-weight="700" fill="#F0F6FC">AI Administrator</text>
+    <text x="42" y="148" font-size="21" fill="#C1D2E0">Turn after-hours messages into conversations.</text>
+    <text x="42" y="204" font-size="14" fill="#93AABF">Responsive design  /  Uzbek interface  /  Static hosting</text>
+  </g>
+  <g fill="none" stroke="#79DBEB" stroke-opacity=".35" stroke-width="2">
+    <rect x="801" y="48" width="128" height="144" rx="18"/>
+    <path d="M827 84h76M827 110h48M827 136h62"/>
+    <circle cx="892" cy="165" r="12"/>
+    <path d="m886 165 4 4 8-9"/>
+  </g>
+</svg>
