@@ -7,6 +7,6 @@
     "check": "node --check assets/menu.js"
   },
   "devDependencies": {
-    "tailwindcss": "3.4.19"
+    "tailwindcss": "4.3.3"
   }
 }
