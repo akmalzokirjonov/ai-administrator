@@ -1,23 +1,37 @@
-<img src="./assets/project-cover.svg" width="100%" alt="AI Administrator — Telegram product landing page" />
+<img src="./assets/project-cover.svg" width="100%" alt="AI Administrator — product website" />
 
-**An Uzbek-language product landing page for a Telegram sales assistant.**
+**The Uzbek-language website of AI Administrator — a voice AI receptionist that answers clinic phone calls, books appointments, and also replies on Telegram.**
 
 [![Static site checks](https://github.com/akmalzokirjonov/ai-administrator/actions/workflows/ci.yml/badge.svg)](https://github.com/akmalzokirjonov/ai-administrator/actions/workflows/ci.yml)
 
-[Open live site →](https://akmalzokirjonov.github.io/ai-administrator/) · [Open demo bot](https://t.me/AISupportUzBot) · [Local development](#local-development)
+[Open live site →](https://akmalzokirjonov.github.io/ai-administrator/) · [Telegram](https://t.me/AISupportUzBot) · [Local development](#local-development)
 
 ## What this repository contains
 
-The **public marketing website** for AI Administrator: a customer conversation comparison, product pricing, and Telegram calls to action. The Telegram bot backend, AI service, and CRM integrations are not part of this repository.
+The **public marketing website** for AI Administrator. The product has three parts, each in its own repository:
+
+| Part | Repository |
+|---|---|
+| Website (this repository) | `ai-administrator` |
+| Phone agent and clinic admin panel — the main product | `ai-administrator-voice` (private) |
+| Telegram assistant for text and voice messages | `ai-administrator-bot` (private) |
+
+The page presents a sample booking call, how the phone agent works, the phone/Telegram/admin-panel features, the booking safety rules, and the current pilot status. Every claim on the page comes from the product documentation in `ai-administrator-voice`; the demo clinic «Shifo» is fictional and the page says so.
 
 ## Highlights
 
 - Responsive navigation and layouts for mobile and desktop.
-- Before-and-after conversation showing the value of after-hours responses.
+- A missed-call versus answered-call comparison built from the agent's real acceptance dialogue.
 - Navy, blue, and cyan visual styling with clear product sections.
 - Keyboard focus, an accessible skip link, Escape-to-close mobile navigation, and reduced-motion support.
 - Precompiled Tailwind CSS served from the repository: page styling does not require JavaScript.
 - Static hosting with GitHub Pages.
+
+### Keeping the content accurate
+
+- Status numbers (20/20 test dialogues, 0 wrong bookings, first real-phone booking in November 2026) come from `docs/ntcc/PROGRESS.md` and `NTCC-SUMMARY.en.md` in the voice repository. Update them only from new measurements.
+- No prices are shown: pricing for the phone agent has not been set yet.
+- Items under «Navbatdagi qadamlar» are planned, not shipped. Move an item into the feature lists only after it works on a real phone.
 
 ## Technology
 
@@ -67,6 +81,6 @@ The Telegram links open an external bot. The website build checks do not verify 
 
 ## O'zbekcha
 
-AI Administrator mahsulotining taqdimot sahifasi. Bu repository landing sahifa kodini saqlaydi; bot va AI backend kodi bu yerda joylanmagan.
+AI Administrator mahsulotining sayti. Mahsulot — klinika telefoniga o'zbek tilida javob beradigan va bemorni qabulga yozadigan ovozli AI administrator (`ai-administrator-voice`), Telegram yordamchisi (`ai-administrator-bot`) bilan birga. Bu repository faqat sayt kodini saqlaydi.
 
 Saytni ochish uchun yuqoridagi **Open live site** havolasidan foydalaning.

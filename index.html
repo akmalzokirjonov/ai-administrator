@@ -3,14 +3,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="color-scheme" content="dark"/>
-<title>AI-Administrator - Mijozni boy bermang</title>
-<meta name="description" content="Telegram bot kechasi ham mijozga javob beradi, ismi va telefonini oladi va sizga tayyor lid kartochkasi yuboradi."/>
+<title>AI-Administrator - Klinika qo'ng'iroqlariga o'zbekcha javob</title>
+<meta name="description" content="AI-Administrator klinika telefoniga o'zbek tilida javob beradi, jadvaldagi bo'sh vaqtni taklif qiladi va bemor rozi bo'lgach qabulga yozadi. Telegram'dagi xabarlarga ham javob beradi."/>
 <meta name="theme-color" content="#0b1326"/>
 <link rel="canonical" href="https://akmalzokirjonov.github.io/ai-administrator/"/>
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg"/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="AI-Administrator — Mijozni boy bermang"/>
-<meta property="og:description" content="Telegram orqali kechki xabarlarga javob va mijoz kontaktlarini yig'ish."/>
+<meta property="og:title" content="AI-Administrator — klinika qo'ng'iroqlariga o'zbekcha javob"/>
+<meta property="og:description" content="Ovozli AI administrator: telefonga javob beradi, bemorni qabulga yozadi va bronni admin panelga chiqaradi."/>
 <meta property="og:url" content="https://akmalzokirjonov.github.io/ai-administrator/"/>
 <meta name="twitter:card" content="summary"/>
 <link rel="stylesheet" href="./assets/styles.css"/>
@@ -29,8 +29,10 @@
             </div>
 <!-- Desktop Nav -->
 <div class="hidden md:flex items-center gap-stack-lg">
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#narx">Tariflar</a>
 <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#namoyish">Namoyish</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#qanday">Qanday ishlaydi</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#imkoniyatlar">Imkoniyatlar</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#holat">Holat</a>
 <a class="animated-gradient-btn text-white px-6 py-2.5 rounded-full font-label-md text-label-md hover:opacity-90 transition-all active:scale-95 duration-200 flex items-center gap-2" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
 <span class="material-symbols-outlined text-[18px]">send</span> Telegramda yozish
                 </a>
@@ -42,8 +44,10 @@
 </div>
 <!-- Mobile Menu -->
 <div id="mobile-menu" class="flex md:hidden border-t border-outline/10 bg-surface/95 backdrop-blur-3xl px-container-padding py-6 flex-col gap-5">
-<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md block" href="#narx">Tariflar</a>
 <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md block" href="#namoyish">Namoyish</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md block" href="#qanday">Qanday ishlaydi</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md block" href="#imkoniyatlar">Imkoniyatlar</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md block" href="#holat">Holat</a>
 <a class="animated-gradient-btn text-white px-6 py-3 rounded-full font-label-md text-label-md flex items-center justify-center gap-2" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
 <span class="material-symbols-outlined text-[18px]">send</span> Telegramda yozish
 </a>
@@ -58,20 +62,20 @@
 <!-- Floating Decorative Elements -->
 <div class="absolute top-1/4 left-[10%] animate-float hidden lg:flex items-center gap-2 px-4 py-3 rounded-2xl glass-card border-primary/20">
 <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(77,142,255,0.2)]">
-<span class="material-symbols-outlined">smart_toy</span>
+<span class="material-symbols-outlined">call</span>
 </div>
 <div>
-<div class="text-[10px] text-primary/80 font-bold uppercase tracking-widest">AI Intelligence</div>
-<div class="font-label-md text-on-surface text-sm">Aqlli javoblar</div>
+<div class="text-[10px] text-primary/80 font-bold uppercase tracking-widest">Ovozli agent</div>
+<div class="font-label-md text-on-surface text-sm">O'zbekcha suhbat</div>
 </div>
 </div>
 <div class="absolute bottom-1/3 right-[10%] animate-float-delayed hidden lg:flex items-center gap-2 px-4 py-3 rounded-2xl glass-card border-secondary/20">
 <div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary shadow-[0_0_15px_rgba(76,215,246,0.2)]">
-<span class="material-symbols-outlined">update</span>
+<span class="material-symbols-outlined">event_available</span>
 </div>
 <div>
-<div class="text-[10px] text-secondary/80 font-bold uppercase tracking-widest">24/7 Automation</div>
-<div class="font-label-md text-on-surface text-sm">Tinimsiz ish</div>
+<div class="text-[10px] text-secondary/80 font-bold uppercase tracking-widest">Bron</div>
+<div class="font-label-md text-on-surface text-sm">Faqat roziligidan keyin</div>
 </div>
 </div>
 <div class="max-w-7xl mx-auto px-container-padding w-full relative z-10 text-center">
@@ -80,84 +84,88 @@
 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
 <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
 </span>
-<span class="font-label-md text-label-md text-on-surface tracking-wide">24/7 Avtomatlashtirilgan javoblar</span>
+<span class="font-label-md text-label-md text-on-surface tracking-wide">Klinikalar uchun ovozli AI administrator</span>
 </div>
 <h1 class="font-headline-xl text-headline-xl text-on-background mb-8 mx-auto max-w-4xl tracking-tighter leading-tight">
-                    Bu xabarga <br class="hidden sm:block"/> <span class="gradient-text">kim javob beradi?</span>
+                    Bu qo'ng'iroqqa <br class="hidden sm:block"/> <span class="gradient-text">kim javob beradi?</span>
 </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-14 leading-relaxed">
-                    Siz uydasiz, telefon jimjit. Mijoz esa javob kutmaydi — u ro'yxatdagi keyingi klinikaga yozadi. Bizning AI buni o'zgartiradi.
+                    Administrator band yoki ish vaqti tugagan — bemor esa kutib turmaydi, keyingi klinikaga qo'ng'iroq qiladi.
+                    AI-Administrator telefonga o'zbek tilida javob beradi, jadvaldagi bo'sh vaqtni taklif qiladi va bemorni qabulga yozadi.
                 </p>
 <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
 <a class="w-full sm:w-auto animated-gradient-btn text-white px-8 py-4 rounded-full font-label-md text-label-md flex items-center justify-center gap-2" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
-<span class="material-symbols-outlined">play_circle</span>
-                        Namoyish botini ochish
+<span class="material-symbols-outlined">send</span>
+                        Pilotga ariza qoldirish
                     </a>
-<a class="w-full sm:w-auto glass-card text-on-background px-8 py-4 rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-all border border-outline/20 hover:border-outline/40 shadow-lg" href="#narx">
-                        Narxni ko'rish
+<a class="w-full sm:w-auto glass-card text-on-background px-8 py-4 rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-all border border-outline/20 hover:border-outline/40 shadow-lg" href="#namoyish">
+                        Qo'ng'iroqni ko'rish
                     </a>
 </div>
 <p class="font-label-md text-label-md text-outline flex items-center justify-center gap-2 tracking-wide opacity-80">
 <span class="material-symbols-outlined text-[16px]">info</span>
-                    Telegram'da ochiladi · ro'yxatdan o'tish shart emas
+                    Ariza Telegram orqali qabul qilinadi · ro'yxatdan o'tish shart emas
                 </p>
 </div>
 </section>
-<!-- Chat Comparison Section -->
+<!-- Call Comparison Section -->
 <section class="py-32 bg-surface-container-lowest relative overflow-hidden" id="namoyish">
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
 <div class="max-w-7xl mx-auto px-container-padding relative z-10">
 <div class="text-center mb-20">
-<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-on-surface-variant mb-6 tracking-tight">Mijozni boy bermang</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Vaqt — bu mijoz. Kechikkan javob, yo'qotilgan daromad demakdir.</p>
+<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-on-surface-variant mb-6 tracking-tight">Bemorni boy bermang</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Javobsiz qolgan qo'ng'iroq — boshqa klinikaga ketgan bemor.</p>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-6xl mx-auto items-stretch">
-<!-- Scenario 1: Without Bot -->
+<!-- Scenario 1: Missed call -->
 <div class="flex flex-col gap-6">
 <div class="flex items-center gap-4 mb-2">
 <div class="h-px bg-outline/20 flex-1"></div>
-<span class="font-label-md text-label-md text-error/80 uppercase tracking-widest px-4 py-1.5 rounded-full bg-error/10 border border-error/20 shadow-[0_0_15px_rgba(255,180,171,0.1)]">Botsiz</span>
+<span class="font-label-md text-label-md text-error/80 uppercase tracking-widest px-4 py-1.5 rounded-full bg-error/10 border border-error/20 shadow-[0_0_15px_rgba(255,180,171,0.1)]">Odatdagidek</span>
 <div class="h-px bg-outline/20 flex-1"></div>
 </div>
 <div class="muted-card rounded-[2rem] p-8 flex flex-col h-full shadow-2xl relative overflow-hidden">
 <div class="absolute inset-0 bg-error/5 opacity-10 pointer-events-none"></div>
 <div class="flex items-center gap-4 border-b border-outline/10 pb-5 mb-8 relative z-10">
 <div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-outline border border-outline/20">
-<span class="material-symbols-outlined text-2xl">person_off</span>
+<span class="material-symbols-outlined text-2xl">phone_missed</span>
 </div>
 <div>
-<div class="font-headline-md text-lg text-on-surface">Mijoz</div>
+<div class="font-headline-md text-lg text-on-surface">Klinika telefoni</div>
 <div class="font-label-md text-xs text-error flex items-center gap-1.5 mt-1">
 <span class="relative flex h-2 w-2">
 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
 <span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
 </span>
-                                        Yo'qotildi
+                                        Bemor yo'qotildi
                                     </div>
 </div>
 </div>
 <div class="space-y-8 flex-1 relative z-10">
-<div class="flex justify-end">
-<div class="bg-surface-container text-on-surface px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-md border border-outline/5">
-                                        Assalomu alaykum, ertaga tish doktoriga bo'sh vaqt bormi?
-                                        <div class="text-[11px] text-right mt-3 text-outline">Kecha 22:10</div>
+<div class="flex justify-start">
+<div class="bg-error-container/20 border border-error/30 text-on-error-container px-5 py-4 rounded-2xl max-w-[85%] font-body-md text-body-md shadow-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-error">call_missed</span>
+<div>
+                                        O'tkazib yuborilgan qo'ng'iroq
+                                        <div class="text-[11px] mt-2 text-error/70">+998 9X ··· ·· ·· · 18:40</div>
+</div>
 </div>
 </div>
 <div class="flex justify-center items-center gap-4">
 <div class="h-px bg-outline/20 flex-1"></div>
-<span class="font-label-md text-xs text-outline px-3 py-1 bg-surface-container/50 rounded-full border border-outline/20 shadow-inner">11 soat o'tdi</span>
+<span class="font-label-md text-xs text-outline px-3 py-1 bg-surface-container/50 rounded-full border border-outline/20 shadow-inner">Ertasi kuni ertalab</span>
 <div class="h-px bg-outline/20 flex-1"></div>
 </div>
 <div class="flex justify-start opacity-60">
 <div class="glass-card text-on-surface px-5 py-4 rounded-2xl rounded-tl-sm max-w-[85%] font-body-md text-body-md border border-outline/10">
-                                        Vaalaykum assalom. Ha, soat 14:00 va 16:30 da bo'sh joy bor.
-                                        <div class="text-[11px] text-right mt-3 text-outline">Bugun 09:15</div>
+                                        Assalomu alaykum, kecha qo'ng'iroq qilgan ekansiz. Qabulga yozilmoqchimidingiz?
+                                        <div class="text-[11px] text-right mt-3 text-outline">Administrator · 09:15</div>
 </div>
 </div>
 <div class="flex justify-end">
-<div class="bg-error-container/20 border border-error/30 text-on-error-container px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-lg">
-                                        Rahmat, men kecha boshqa joyga yozildim.
-                                        <div class="text-[11px] text-right mt-3 text-error/70">Bugun 09:20</div>
+<div class="bg-surface-container text-on-surface px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-md border border-outline/5">
+                                        Rahmat, men kecha boshqa klinikaga yozilib bo'ldim.
+                                        <div class="text-[11px] text-right mt-3 text-outline">Bemor · 09:16</div>
 </div>
 </div>
 </div>
@@ -170,52 +178,59 @@
 <span class="font-label-md text-label-md text-secondary uppercase tracking-widest px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/30 shadow-[0_0_15px_rgba(76,215,246,0.2)]">AI-Administrator bilan</span>
 <div class="h-px bg-outline/20 flex-1"></div>
 </div>
-<div class="glass-card border-beam rounded-[2rem] p-8 flex flex-col h-full relative shadow-[0_20px_50px_rgba(76,215,246,0.1)] bg-surface-container/80"><!-- Header -->
+<div class="glass-card border-beam rounded-[2rem] p-8 flex flex-col h-full relative shadow-[0_20px_50px_rgba(76,215,246,0.1)] bg-surface-container/80">
 <div class="flex items-center gap-4 border-b border-outline/10 pb-5 mb-8 relative z-10">
 <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary border border-primary/20 shadow-[0_0_15px_rgba(173,198,255,0.2)]">
-<span class="material-symbols-outlined text-2xl">smart_toy</span>
+<span class="material-symbols-outlined text-2xl">support_agent</span>
 </div>
 <div>
-<div class="font-headline-md text-lg text-on-surface">AI-Administrator</div>
+<div class="font-headline-md text-lg text-on-surface">«Shifo» stomatologiya klinikasi</div>
 <div class="font-label-md text-xs text-secondary flex items-center gap-1.5 mt-1">
 <span class="relative flex h-2 w-2">
 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
 <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
 </span>
-            Onlayn
+            Qo'ng'iroqqa agent javob berdi · 18:40
         </div>
 </div>
 </div>
-<!-- Chat Messages -->
-<div class="space-y-6 flex-1 relative z-10">
-<!-- User Message -->
-<div class="flex justify-end">
-<div class="bg-surface-container-high text-on-surface px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-md border border-outline/5">
-            Assalomu alaykum, ertaga tish doktoriga bo'sh vaqt bormi?
-            <div class="text-[11px] text-right mt-3 text-outline">22:10</div>
-</div>
-</div>
-<!-- AI Response -->
+<div class="space-y-5 flex-1 relative z-10">
 <div class="flex justify-start">
 <div class="bg-primary/10 border border-primary/20 text-on-surface px-5 py-4 rounded-2xl rounded-tl-sm max-w-[85%] font-body-md text-body-md shadow-lg backdrop-blur-sm">
-            Va alaykum assalom! 🦷 Ha, ertaga qabul bor. Ismingiz va telefon raqamingizni qoldiring — administrator ertalab qo'ng'iroq qilib, sizga qulay vaqtni kelishadi.
-            <div class="text-[11px] text-right mt-3 text-primary/70">22:10</div>
+            Assalomu alaykum! «Shifo» klinikasi, men AI yordamchiman. Qanday yordam bera olaman?
+            <div class="text-[11px] text-right mt-3 text-primary/70">Agent</div>
 </div>
 </div>
-<!-- User Confirmation -->
 <div class="flex justify-end">
 <div class="bg-surface-container-high text-on-surface px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-md border border-outline/5">
-            Dilnoza, +998 90 123-45-67. Tushdan keyin qulay.
-            <div class="text-[11px] text-right mt-3 text-outline">22:12</div>
+            Stomatologga yozilmoqchi edim. Ertaga ertalab soat 10 da bo'lsa yaxshi bo'lardi.
+            <div class="text-[11px] text-right mt-3 text-outline">Bemor</div>
 </div>
 </div>
-<!-- Success Notification -->
+<div class="flex justify-start">
+<div class="bg-primary/10 border border-primary/20 text-on-surface px-5 py-4 rounded-2xl rounded-tl-sm max-w-[85%] font-body-md text-body-md shadow-lg backdrop-blur-sm">
+            Ertaga soat 10:00 da stomatologimiz bo'sh. Ism-familiyangizni ayting, yozib qo'yaman.
+            <div class="text-[11px] text-right mt-3 text-primary/70">Agent</div>
+</div>
+</div>
+<div class="flex justify-end">
+<div class="bg-surface-container-high text-on-surface px-5 py-4 rounded-2xl rounded-tr-sm max-w-[85%] font-body-md text-body-md shadow-md border border-outline/5">
+            Mansur Ergashev.
+            <div class="text-[11px] text-right mt-3 text-outline">Bemor</div>
+</div>
+</div>
+<div class="flex justify-start">
+<div class="bg-primary/10 border border-primary/20 text-on-surface px-5 py-4 rounded-2xl rounded-tl-sm max-w-[85%] font-body-md text-body-md shadow-lg backdrop-blur-sm">
+            Rahmat, Mansur aka! Ertaga soat 10:00 ga stomatologga yozildingiz. Sog' bo'ling!
+            <div class="text-[11px] text-right mt-3 text-primary/70">Agent</div>
+</div>
+</div>
 <div class="flex justify-start">
 <div class="bg-secondary/10 border border-secondary/30 text-on-surface px-5 py-4 rounded-2xl max-w-[85%] font-body-sm text-body-sm flex items-start gap-3 shadow-[0_4px_20px_rgba(76,215,246,0.1)] backdrop-blur-md">
-<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="material-symbols-outlined text-secondary">event_available</span>
 <div>
-<div class="font-bold tracking-wide">Lid kartochkasi yuborildi!</div>
-<div class="text-xs opacity-70 mt-0.5">Dilnoza · +998 90 123-45-67 · tushdan keyin — egasining Telegramiga bordi.</div>
+<div class="font-bold tracking-wide">Bron admin panelga tushdi</div>
+<div class="text-xs opacity-70 mt-0.5">Mansur Ergashev · ertaga 10:00 · Stomatolog — haftalik kalendarda ko'rinadi.</div>
 </div>
 </div>
 </div>
@@ -223,147 +238,192 @@
 </div>
 </div>
 <p class="text-center font-body-sm text-body-sm text-outline mt-16 max-w-2xl mx-auto leading-relaxed">
-Bot qabulga yozmaydi — u mijozning ismi va telefonini oladi va sizga uzatadi.
-Aniq vaqtni administratoringiz jonli qo'ng'iroqda kelishadi.
+Bu — agentning haqiqiy qabul suhbati andozasi. «Shifo» esa sinov uchun o'ylab topilgan klinika:
+uning manzili, narxlari va shifokori haqiqiy emas.
 </p>
 </div>
 </section>
 
-<!--
-  ================= STATISTIKA =================
-  DIQQAT: bu blok javobsizlik testidan KEYIN ochiladi.
-  `python javobsizlik.py` chiqargan REAL raqamlarni qo'ying. O'ylab topmang.
-  To'ldirgach izoh belgilarini olib tashlang.
-
-<section class="py-32 bg-surface relative">
-<div class="max-w-7xl mx-auto px-container-padding">
-<div class="text-center mb-20 max-w-3xl mx-auto">
-<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-fixed mb-6 tracking-tight">Buni o'zimiz o'lchadik</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Toshkentdagi 30 ta bizneska kechqurun soat 21:30 da oddiy mijoz sifatida yozdik.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
-<div class="glass-card rounded-[2rem] p-10 text-center">
-<div class="font-headline-xl text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold">__</div>
-<div class="font-body-md text-body-md text-on-surface-variant mt-4">tasi o'sha kechqurun umuman javob bermadi</div>
-</div>
-<div class="glass-card rounded-[2rem] p-10 text-center">
-<div class="font-headline-xl text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold">__%</div>
-<div class="font-body-md text-body-md text-on-surface-variant mt-4">javobsizlik darajasi</div>
-</div>
-<div class="glass-card rounded-[2rem] p-10 text-center">
-<div class="font-headline-xl text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold">__</div>
-<div class="font-body-md text-body-md text-on-surface-variant mt-4">soat o'rtacha javob kutish vaqti</div>
-</div>
-</div>
-<p class="text-center font-label-md text-label-md text-outline mt-12">Namuna: 30 ta biznes · stomatologiya, avtoservis, go'zallik saloni · Toshkent · __.08.2026</p>
-</div>
-</section>
--->
-
-<!-- Pricing Section -->
-<section class="py-32 bg-surface relative" id="narx">
+<!-- How it works -->
+<section class="py-32 bg-surface relative" id="qanday">
 <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-outline/20 to-transparent"></div>
 <div class="max-w-7xl mx-auto px-container-padding">
 <div class="text-center mb-20 max-w-3xl mx-auto">
-<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-fixed mb-6 tracking-tight">Sarmoyadan yuqori daromad</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Bitta qaytarilgan mijoz oylik to'lovni qoplaydi. Uzoq muddatli shartnoma yo'q.</p>
+<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-fixed mb-6 tracking-tight">Qanday ishlaydi</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Bemor oddiy telefon raqamiga qo'ng'iroq qiladi. Qolganini agent bajaradi.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto items-stretch">
-<!-- Standard Plan -->
-<div class="glass-card rounded-[2rem] p-10 flex flex-col h-full border border-outline/10 hover:border-outline/30 transition-all duration-400">
-<div class="mb-10">
-<div class="font-label-md text-sm text-secondary mb-3 tracking-widest uppercase font-bold">Standart</div>
-<div class="flex items-baseline gap-2">
-<h3 class="font-headline-xl text-5xl text-on-background font-extrabold tracking-tighter">500 000</h3>
-<span class="text-body-md font-medium text-on-surface-variant">so'm/oy</span>
+<ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+<li class="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span class="font-mono-code text-mono-code text-secondary">01</span>
+<span class="material-symbols-outlined text-primary">call</span>
 </div>
+<h3 class="font-headline-md text-lg text-on-surface">Javob beradi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Klinika raqamiga kelgan qo'ng'iroqqa agent avtomatik javob beradi va klinika nomidan salomlashadi.</p>
+</li>
+<li class="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span class="font-mono-code text-mono-code text-secondary">02</span>
+<span class="material-symbols-outlined text-primary">record_voice_over</span>
 </div>
-<ul class="flex-1 space-y-6 mb-12">
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Sizning nomingiz bilan alohida bot</span>
+<h3 class="font-headline-md text-lg text-on-surface">Tinglaydi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Oddiy so'zlashuv tilini tushunadi: «ertaga ertalab», «dushanba kuni vaqt bormi?». Ish vaqti, manzil va narx haqidagi savollarga tasdiqlangan javoblardan javob beradi.</p>
 </li>
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Narx, manzil va ish vaqti bo'yicha javoblar</span>
-</li>
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Mijoz kontaktlarini (lid) Telegram'ga yuborish</span>
-</li>
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Bilimlar bazasini istalgan vaqt yangilash</span>
-</li>
-<li class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px] shadow-sm">check</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Sozlash va ishga tushirish kiritilgan</span>
-</li>
-</ul>
-<a class="w-full bg-surface-bright/50 backdrop-blur-sm text-on-surface py-4 rounded-xl font-label-md text-sm uppercase tracking-widest font-bold hover:bg-surface-container-high transition-colors border border-outline/20 hover:border-outline/40 shadow-sm text-center block" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
-                            Avval sinab ko'ring
-                        </a>
+<li class="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span class="font-mono-code text-mono-code text-secondary">03</span>
+<span class="material-symbols-outlined text-primary">event_available</span>
 </div>
-<!-- Premium Plan -->
-<div class="glass-card border-beam rounded-[2rem] p-8 flex flex-col h-full relative shadow-[0_20px_50px_rgba(76,215,246,0.15)] bg-surface-container overflow-hidden group">
-<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_2.5s_infinite_linear] pointer-events-none"></div>
-<div class="mb-10 relative z-10">
+<h3 class="font-headline-md text-lg text-on-surface">Qabulga yozadi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Jadvaldan bo'sh vaqtni aytadi, band bo'lsa eng yaqin ikki variantni taklif qiladi. Bron faqat bemor ismini aytib rozi bo'lgandan keyin yoziladi.</p>
+</li>
+<li class="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span class="font-mono-code text-mono-code text-secondary">04</span>
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+</div>
+<h3 class="font-headline-md text-lg text-on-surface">Panelga chiqaradi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Bron admin panelning haftalik kalendarida ism va raqam bilan ko'rinadi. Har bir qo'ng'iroqning natijasi bir qatorda yoziladi.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- Features: phone, Telegram, panel -->
+<section class="py-32 bg-surface-container-lowest relative overflow-hidden" id="imkoniyatlar">
+<div class="max-w-7xl mx-auto px-container-padding relative z-10">
+<div class="text-center mb-20 max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-fixed mb-6 tracking-tight">Bitta administrator — ikki kanal</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Telefon qo'ng'iroqlari va Telegram xabarlari bir mahsulotda, bitta admin panel bilan.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+<!-- Phone agent -->
+<div class="glass-card border-beam rounded-[2rem] p-8 flex flex-col h-full bg-surface-container/80">
 <div class="font-label-md text-sm text-secondary mb-3 tracking-widest uppercase font-bold flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px]">verified</span> Kengaytirilgan
-                            </div>
-<div class="flex items-baseline gap-2">
-<h3 class="font-headline-xl text-5xl text-on-background font-extrabold tracking-tighter">700 000</h3>
-<span class="text-body-md font-medium text-on-surface-variant">so'm/oy</span>
+<span class="material-symbols-outlined text-[18px]">call</span> Telefon agenti
 </div>
-</div>
-<ul class="flex-1 space-y-6 mb-12 relative z-10">
-<li class="flex items-start gap-4 p-4 rounded-xl bg-secondary/10 border border-secondary/20 shadow-inner">
-<span class="material-symbols-outlined text-secondary text-[24px]">done_all</span>
-<span class="font-body-md text-body-md text-on-surface font-semibold mt-0.5">Standart tarifdagi barcha imkoniyatlar</span>
-</li>
-<li class="flex items-start gap-4 px-2">
-<span class="material-symbols-outlined text-secondary/80 text-[22px]">graphic_eq</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Ovozli xabarlarni tushunish</span>
-</li>
-<li class="flex items-start gap-4 px-2">
-<span class="material-symbols-outlined text-secondary/80 text-[22px]">note_add</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Narxnomalarni fayl yuklash orqali yangilash</span>
-</li>
-<li class="flex items-start gap-4 px-2">
-<span class="material-symbols-outlined text-secondary/80 text-[22px]">hub</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">CRM integratsiya (Google Sheets / AmoCRM)</span>
-</li>
-<li class="flex items-start gap-4 px-2">
-<span class="material-symbols-outlined text-secondary/80 text-[22px]">query_stats</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Suhbatlar tarixi va statistika</span>
-</li>
-<li class="flex items-start gap-4 px-2">
-<span class="material-symbols-outlined text-secondary/80 text-[22px]">support_agent</span>
-<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Ustuvor texnik yordam</span>
-</li>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-8">AI Administrator Voice — asosiy kanal.</p>
+<ul class="flex-1 space-y-5">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">Oddiy mobil raqamga kelgan qo'ng'iroqqa avtomatik javob</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">O'zbekcha nutqni tanish va tabiiy o'zbekcha ovoz</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">Kun, vaqt va ismni tushunadi, ism shubhali bo'lsa bron tafsilotlarini qayta o'qib beradi</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">Rejadan chiqishda yiqilmaydi: savol, boshqa vaqt, jimlik yoki go'shak qo'yilishi</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">Qayta qo'ng'iroq so'rovlarini panelga yozadi</span></li>
 </ul>
-<a class="w-full animated-gradient-btn text-white py-4 rounded-xl font-label-md text-sm uppercase tracking-widest font-bold relative z-10 text-center block" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
-                            Avval sinab ko'ring
-                        </a>
 </div>
+<!-- Telegram -->
+<div class="glass-card rounded-[2rem] p-8 flex flex-col h-full border border-outline/10">
+<div class="font-label-md text-sm text-secondary mb-3 tracking-widest uppercase font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">send</span> Telegram
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-8">Yozib murojaat qiladigan mijozlar uchun.</p>
+<ul class="flex-1 space-y-5">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">Matnli va ovozli xabarlarga javob beradi</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">Ism, telefon va qulay vaqtni yig'ib, klinikaga tayyor kartochka yuboradi</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">Mijoz operator so'rasa, to'xtaydi va administratorga xabar beradi</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">Murojaat darajasi va holati: bog'landim, kelishildi, rad etildi</span></li>
+</ul>
+</div>
+<!-- Admin panel -->
+<div class="glass-card rounded-[2rem] p-8 flex flex-col h-full border border-outline/10">
+<div class="font-label-md text-sm text-secondary mb-3 tracking-widest uppercase font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">dashboard</span> Admin panel
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-8">Klinika administratori uchun.</p>
+<ul class="flex-1 space-y-5">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant"><b class="text-on-surface">Bronlar</b> — haftalik kalendar, bekor qilish</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant"><b class="text-on-surface">Jadval va xizmatlar</b> — shifokor jadvali va xizmatlar ro'yxati</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant"><b class="text-on-surface">Agent va FAQ</b> — salomlashuv va tez-tez beriladigan savollar</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">check</span><span class="font-body-sm text-body-sm text-on-surface-variant">Qo'ng'iroqlar natijalari va qayta qo'ng'iroq murojaatlari</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Trust -->
+<section class="py-32 bg-surface relative" id="ishonch">
+<div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-outline/20 to-transparent"></div>
+<div class="max-w-7xl mx-auto px-container-padding">
+<div class="text-center mb-20 max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-fixed mb-6 tracking-tight">Xato bronsiz</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Agent tez gapiradi, lekin hech narsani taxmin qilmaydi.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+<div class="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+<span class="material-symbols-outlined text-secondary text-[28px]">how_to_reg</span>
+<h3 class="font-headline-md text-lg text-on-surface">Faqat rozilik bilan</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Taklif oxirigacha eshittiriladi. Bemor ismini aytmasa yoki «boshqa vaqt» desa, bron yozilmaydi.</p>
+</div>
+<div class="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+<span class="material-symbols-outlined text-secondary text-[28px]">event_busy</span>
+<h3 class="font-headline-md text-lg text-on-surface">Ikki marta band qilinmaydi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Vaqt yozish paytida qayta tekshiriladi, baza bitta vaqtga ikki bronni qabul qilmaydi.</p>
+</div>
+<div class="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+<span class="material-symbols-outlined text-secondary text-[28px]">fact_check</span>
+<h3 class="font-headline-md text-lg text-on-surface">O'ylab topmaydi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Narx, vaqt va manzil faqat klinika tasdiqlagan ma'lumotdan. Tashxis va dori bo'yicha maslahat bermaydi.</p>
+</div>
+<div class="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+<span class="material-symbols-outlined text-secondary text-[28px]">lock</span>
+<h3 class="font-headline-md text-lg text-on-surface">Suhbat matni saqlanmaydi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Haqiqiy qo'ng'iroqlardan faqat natija, sonlar va vaqtlar yoziladi — bemor gaplari emas.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Status -->
+<section class="py-32 bg-surface-container-lowest relative overflow-hidden" id="holat">
+<div class="max-w-7xl mx-auto px-container-padding relative z-10">
+<div class="text-center mb-20 max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-fixed mb-6 tracking-tight">Hozir qayerdamiz</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Mahsulot pilot bosqichida. Raqamlar o'lchangan, va'da qilingan emas.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+<div class="glass-card rounded-[2rem] p-10 text-center">
+<div class="font-headline-xl text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold">20/20</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-4">sinov suhbati kutilgan natija bilan tugadi, ulardan 10 tasi rejadan chiqishli</div>
+</div>
+<div class="glass-card rounded-[2rem] p-10 text-center">
+<div class="font-headline-xl text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold">0</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-4">noto'g'ri bron o'sha sinovlarda</div>
+</div>
+<div class="glass-card rounded-[2rem] p-10 text-center">
+<div class="font-headline-xl text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-extrabold">2026</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-4">noyabr — haqiqiy telefon qo'ng'irog'ida birinchi bron yozildi</div>
+</div>
+</div>
+<div class="glass-card rounded-[2rem] p-8 md:p-10 max-w-5xl mx-auto mt-10 border border-outline/10">
+<div class="font-label-md text-sm text-secondary mb-6 tracking-widest uppercase font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">route</span> Navbatdagi qadamlar
+</div>
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline text-[20px]">schedule</span><span class="font-body-sm text-body-sm text-on-surface-variant">Bron yozilgach bemorga tasdiq SMS'i</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline text-[20px]">schedule</span><span class="font-body-sm text-body-sm text-on-surface-variant">Bir nechta shifokor va mutaxassislik, bronni ko'chirish</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline text-[20px]">schedule</span><span class="font-body-sm text-body-sm text-on-surface-variant">CRM integratsiyasi (Bitrix24 / amoCRM) va eslatma SMS'lari</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline text-[20px]">schedule</span><span class="font-body-sm text-body-sm text-on-surface-variant">Klinika raqami uchun GSM shlyuz yoki SIP trunk</span></li>
+</ul>
 </div>
 </div>
 </section>
 </main>
 <!-- Call to Action & Footer Combined -->
-<footer class="bg-surface-container-lowest border-t border-outline/10 w-full pt-24 pb-0 relative overflow-hidden">
+<footer class="bg-surface border-t border-outline/10 w-full pt-24 pb-0 relative overflow-hidden">
 <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-t-[100%] blur-[120px] pointer-events-none"></div>
 <!-- CTA Section -->
 <div class="max-w-4xl mx-auto px-container-padding text-center mb-24 relative z-10">
 <h2 class="font-headline-xl text-5xl text-on-background mb-8 font-extrabold tracking-tighter">
-                Bugun kechqurun bot ishlab tursin
+                Klinikangizda sinab ko'ring
             </h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 leading-relaxed max-w-2xl mx-auto">
-                Ishga tushirish atigi bir kun oladi. Sizdan kerak bo'ladigan narsa — xizmatlar ro'yxati, narxlar, manzil va ish vaqti.
+                Birinchi pilot klinikalarni qabul qilyapmiz. Sizdan kerak bo'ladigan narsa — shifokorlar jadvali, xizmatlar, manzil va tez-tez beriladigan savollar.
+                Shartlar Telegram orqali kelishiladi.
             </p>
 <a class="inline-flex items-center gap-3 animated-gradient-btn text-white px-10 py-5 rounded-full font-label-md text-base uppercase tracking-widest font-bold shadow-2xl hover:shadow-[0_10px_40px_rgba(77,142,255,0.4)]" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">
 <span class="material-symbols-outlined text-[24px]">rocket_launch</span>
-                Hoziroq boshlash
+                Pilotga ariza qoldirish
             </a>
 </div>
 <!-- Footer Component -->
@@ -374,23 +434,24 @@ Aniq vaqtni administratoringiz jonli qo'ng'iroqda kelishadi.
                         AI-Administrator
                     </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs leading-relaxed">
-                        Klinika va xizmat ko'rsatish sohalari uchun Telegram administrator.
-                        Kechki xabarlarga javob beradi, lid yig'adi va sizga uzatadi.
+                        Klinikalar uchun ovozli AI administrator. Telefonga o'zbek tilida javob beradi,
+                        bemorni qabulga yozadi va Telegram'dagi xabarlarga javob beradi.
                     </p>
 </div>
 <div class="flex flex-col gap-4 font-body-sm text-body-sm">
 <div class="font-label-md text-on-surface mb-2 font-bold uppercase tracking-widest">Mahsulot</div>
 <a class="text-on-surface-variant hover:text-secondary transition-colors" href="#namoyish">Namoyish</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#narx">Tariflar</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#qanday">Qanday ishlaydi</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#imkoniyatlar">Imkoniyatlar</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#holat">Holat</a>
 </div>
 <div class="flex flex-col gap-4 font-body-sm text-body-sm">
 <div class="font-label-md text-on-surface mb-2 font-bold uppercase tracking-widest">Aloqa</div>
 <a class="text-on-surface-variant hover:text-secondary transition-colors" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">Telegram orqali yozish</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors" href="https://t.me/AISupportUzBot" target="_blank" rel="noopener">Namoyish botini ochish</a>
 </div>
 <div class="col-span-1 md:col-span-4 mt-12 pt-8 border-t border-outline/10 font-body-sm text-body-sm text-on-surface-variant flex flex-col md:flex-row justify-between items-center gap-4">
 <span>© 2026 AI-Administrator</span>
-<span class="text-outline text-xs">Namoyish boti: @AISupportUzBot</span>
+<span class="text-outline text-xs">Telegram: @AISupportUzBot</span>
 </div>
 </div>
 </div>
